@@ -1,0 +1,44 @@
+.array {
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+.box {
+  /* border: 1px solid #d3d6db;  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 50px;
+  width: 50px;
+  font-size: 35px;
+  cursor: pointer;
+  color:#848391;
+  margin-bottom: -1px;
+  margin-left: -1px;
+}
+
+.box-value {
+    border: 1px solid turquoise;
+    /* border-bottom: 30px solid lightblue; */
+}
+
+.index {
+  font-size: 20px;
+  border: 1px solid white;
+}
+
+
+.pointer {
+  background-color: turquoise;
+  position: absolute;
+  left: 37px;
+  height: 30px;
+  width: 10px;
+}
