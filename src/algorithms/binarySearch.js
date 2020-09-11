@@ -5,7 +5,13 @@ const sleep = ms => {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-const binarySearch = async (arr, target, leftPointer,  rightPointer) => {  
+const binarySearch = async (
+    arr, 
+    target, 
+    leftPointer,  
+    rightPointer, 
+    setLeftPointer
+    ) => {  
     
     let left = 0;
     let right = arr.length - 1
@@ -18,6 +24,7 @@ const binarySearch = async (arr, target, leftPointer,  rightPointer) => {
         let mid = Math.floor((left + right) / 2)
         const midDiv = document.getElementById(mid)
         const leftDiv = document.getElementById(left)
+        setLeftPointer(20 + (50 * left))
         const rightDiv = document.getElementById(right)
         leftDiv.style.backgroundColor = edgeColor;
         rightDiv.style.backgroundColor = edgeColor;

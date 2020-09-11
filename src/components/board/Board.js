@@ -14,9 +14,15 @@ class Board extends React.Component{
         arr: [],
         speed: 100,
         target: 10,
+        leftPointer: 20,
+        rightPointer: 30,
         animations: []
     }
 
+    setLeftPointer  = (left) => {
+        this.setState({leftPointer: left})
+    }
+ 
     componentDidMount(){
         this.generateNewArray();
     }; 
@@ -24,7 +30,11 @@ class Board extends React.Component{
     generateNewArray = () => {
         this.setState({arr: []})
         setTimeout(() => {
-            this.setState({ arr: sortedArr(generateRandomArray()), animations: [], target: generateRandomNumber() });
+            this.setState({ arr: sortedArr(generateRandomArray()), 
+                animations: [], 
+                target: generateRandomNumber(),
+                leftPointer: 20
+             });
         }, 10);
         
     }
@@ -47,7 +57,7 @@ class Board extends React.Component{
         })
     }
     binarySearch = () => {
-        binarySearch(this.state.arr, this.state.target, document.getElementById('left-pointer'))
+        binarySearch(this.state.arr, this.state.target,undefined, undefined, this.setLeftPointer)
 
     };
 
@@ -67,6 +77,11 @@ class Board extends React.Component{
     render(){
         return(
             <div style={{ position: "relative"}}>
+                <div className="left-pointer" style={{ left: this.state.leftPointer }} >
+                    <div className="pointer" id={"left-pointer"}>
+                    </div>
+                    <div>Left</div>
+               </div>
                <div className="buttons">
                     <button onClick={this.generateNewArray}>Generate Array</button>
                     <button onClick={this.linearSearch}>Search {this.state.target}</button>
@@ -80,8 +95,7 @@ class Board extends React.Component{
                         <Square value={value} key={index} id={index}/>
                     ))}
                 </div>
-                <div className="pointer" id={"left-pointer"}>
-                </div>
+                
                 <div className="array">
                     {this.state.arr.map((value, index) => (
                         <div className="box index" key={`${value} - ${index}`}>{index}</div>
@@ -106,7 +120,7 @@ async function testAlgorithm (searchAlgorithm) {
 
 function generateRandomArray() {
     const arr = []
-    for(let i =0; i < 20; i++){
+    for(let i =0; i < 30; i++){
         arr.push(Math.floor(Math.random() * 30))
     }
     return arr
