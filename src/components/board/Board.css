@@ -1,4 +1,4 @@
-.array {
+.row {
     margin: 20px;
     display: flex;
     flex-direction: row;
@@ -10,66 +10,20 @@
   justify-content: space-around;
 }
 .box {
-  /* border: 1px solid #d3d6db;  */
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   height: 50px;
   width: 50px;
   font-size: 35px;
   cursor: pointer;
   color:#848391;
-  margin-bottom: -1px;
-  margin-left: -1px;
 }
 
-.box-value {
-    border: 1px solid turquoise;
-    /* border-bottom: 30px solid lightblue; */
-}
+
 
 .index {
-  font-size: 20px;
-  border: 1px solid white;
+  font-size: 12px;
+  /* border: 1px solid white; */
 }
 
-.left-pointer {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  top: 200px;
-  transition: all;
-  transition-duration: 2s;
-}
-.pointer {
-  width: 50px;
-  height: 3px;
-  position: relative;
-  transform: rotate(-90deg);
-  background-color: #000;
-  
-}
-
-.pointer:after {
-  content: "";
-  display: inline-block;
-  height: 3px;
-  width: 15px;
-  position: absolute;
-  background-color: #000;
-  transform: rotate(45deg);
-  right: -3px;
-  bottom: 4px;
-}
-.pointer::before {
-  content: "";
-  display: inline-block;
-  height: 3px;
-  width: 15px;
-  position: absolute;
-  background-color: #000;
-  transform: rotate(-45deg);
-  right: -3px;
-  bottom: -4px;
-}

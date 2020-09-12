@@ -1,0 +1,53 @@
+.pointer {
+  transition: all;
+  position: absolute;
+  transition-duration: 1s;
+  transform-origin: left;
+  transform: rotate(-90deg);
+  width: 50px;
+  height: 3px;
+}
+.pointer:after {
+  content: "";
+  display: inline-block;
+  height: 3px;
+  width: 15px;
+  position: absolute;
+  /* background-color: #000; */
+  transform: rotate(45deg);
+  right: -3px;
+  bottom: 4px;
+}
+.pointer::before {
+  content: "";
+  display: inline-block;
+  height: 3px;
+  width: 15px;
+  position: absolute;
+  /* background-color: #000; */
+  transform: rotate(-45deg);
+  right: -3px;
+  bottom: -4px;
+}
+.left-pointer{
+  background-color: blue;
+}
+.mid-pointer {
+  background-color: green;
+}
+.right-pointer {
+  background-color: blueviolet;
+}
+
+.left-pointer::before, .left-pointer::after{
+  background-color: blue;
+}
+
+.mid-pointer::before, .mid-pointer::after{
+  background-color: green;
+}
+
+.right-pointer::before, .right-pointer::after{
+  background-color: blueviolet;
+}
+

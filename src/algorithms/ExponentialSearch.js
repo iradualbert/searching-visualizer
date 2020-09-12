@@ -1,23 +1,23 @@
 import binarySearch from "./binarySearch";
-import  { sleep, colors } from "./utils";
+import  { sleep } from "./utils";
 
-const exponentialSearch  = async (arr, target) => {
+const delay = 1000
+
+
+const exponentialSearch  = async (arr, target, setPointers) => {
     const size = arr.length
     if(arr[0] === target){
         document.getElementById(0).style.backgroundColor = "green"
         return 0
     }
-    let i = 1;
-    let currentDiv = document.getElementById(i)
-    
+    let i = 1;    
     while (i < size && arr[i] <= target){
-        currentDiv.style.backgroundColor = colors.midColor
+        setPointers({left: (25 + (50 * i))})
         i = i * 2
-        await sleep(100)
-        currentDiv = document.getElementById(i)
+        await sleep(delay)
     }
-    await sleep(1000)
-    binarySearch(arr, target, i/2, Math.min(i, size-1))
+    await sleep(delay)
+    binarySearch(arr, target, i/2, Math.min(i, size-1), setPointers)
 }
 
 export default exponentialSearch;

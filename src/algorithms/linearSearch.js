@@ -1,16 +1,22 @@
-const linearSearch = (arr, n, animations) => {
-    let found = false;
-    let index = null;
-    
-    for(let i =0; i < arr.length; i++){
-        animations.push(i)
-        if( arr[i] === n){
-            found = true;
-            index = i
-            break;
+import { sleep, calculatePosition } from "./utils"
+const delay = 1000
+
+async function linearSearch(
+    arr,
+    target,
+    setPointers,
+    startIndex = 0
+) {
+    for (let i = startIndex; i < arr.length; i++) {
+        setPointers({ left: calculatePosition(i) })
+        if (arr[i] === target) {
+            await sleep(delay)
+            document.getElementById(i).style.backgroundColor = "green"
+            return i
         }
+        await sleep(delay)
     };
-    return [found, index]
+    return -1
 }
 
 
