@@ -7,8 +7,9 @@ async function linearSearch(
     setPointers,
     startIndex = 0
 ) {
-    for (let i = startIndex; i < arr.length; i++) {
-        setPointers({ left: calculatePosition(i) })
+    const size = arr.length
+    for (let i = startIndex; i < size; i++) {
+        setPointers({ left: calculatePosition(i, size) })
         if (arr[i] === target) {
             await sleep(delay)
             document.getElementById(i).style.backgroundColor = "green"

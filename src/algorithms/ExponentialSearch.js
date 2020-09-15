@@ -1,5 +1,5 @@
 import binarySearch from "./binarySearch";
-import  { sleep } from "./utils";
+import  { sleep, calculatePosition} from "./utils";
 
 const delay = 1000
 
@@ -12,7 +12,7 @@ const exponentialSearch  = async (arr, target, setPointers) => {
     }
     let i = 1;    
     while (i < size && arr[i] <= target){
-        setPointers({left: (25 + (50 * i))})
+        setPointers({left: calculatePosition(i, size)})
         i = i * 2
         await sleep(delay)
     }

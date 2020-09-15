@@ -14,8 +14,8 @@ const jumpSearch = async (arr, target, setPointers) =>{
     }
     while( arr[end] < target) {
         setPointers({
-            left: calculatePosition(start),
-            right: calculatePosition(end)
+            left: calculatePosition(start, size),
+            right: calculatePosition(end, size)
         })
         await sleep(delay)
         if(arr[start] > target){
@@ -24,8 +24,8 @@ const jumpSearch = async (arr, target, setPointers) =>{
         start = end;
         end += step;
         setPointers({
-            left: calculatePosition(start),
-            right: calculatePosition(Math.min(end, size - 1))
+            left: calculatePosition(start, size),
+            right: calculatePosition(Math.min(end, size - 1), size)
         })
     }
     // call linear search

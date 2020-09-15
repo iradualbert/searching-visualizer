@@ -15,6 +15,8 @@ class Board extends React.Component{
         arr: [],
         speed: 100,
         target: 10,
+        n: 20,
+        barWidth: 50,
         leftPointer: -75,
         rightPointer: -50,
         midPointer: -25,
@@ -36,33 +38,44 @@ class Board extends React.Component{
     componentDidMount(){
         this.generateNewArray();
     }; 
-
+    handleChange = async (event) =>{
+        const n = event.target.value
+        const barWidth = Math.floor(1000 / n)
+        await this.setState({n: n, barWidth: barWidth})
+        this.generateNewArray()
+    }
     generateNewArray = () => {
+        const { n } = this.state 
         this.setState({arr: []})
-        setTimeout(() => {
-            this.setState({ arr: sortedArr(generateRandomArray()), 
+        this.setState({
+            arr: sortedArr(generateRandomArray(n)), 
                 target: generateRandomNumber(),
                 leftPointer: -75,
                 rightPointer: -50,
                 midPointer: -25,
-             });
-        }, 10);
-        
+        });
+        const bars = document.getElementsByClassName('box box-value')
+        for(let bar of bars){
+            bar.style.backgroundColor =""
+        }
     }
-    
-    linearSearch = () => {
-        const { arr, target } = this.state;
-        linearSearch(arr, target, this.setPointers)
-    }
-    binarySearch = async () => {
-        const { arr, target} = this.state
-        await binarySearch(arr, target, null, null, this.setPointers)
+
+    resetPointers = () => {
         this.setPointers({
             left: -75,
             mid: -50,
             right: -25
         })
-
+    }
+    
+    linearSearch = async () => {
+        const { arr, target } = this.state;
+        await linearSearch(arr, target, this.setPointers)
+    }
+    binarySearch = async () => {
+        const { arr, target} = this.state
+        await binarySearch(arr, target, null, null, this.setPointers)
+        this.resetPointers()
     };
 
     jumpSearch = async () => {
@@ -74,14 +87,24 @@ class Board extends React.Component{
     exponentialSearch = async () => {
         const {arr, target } = this.state;
         await exponentialSearch(arr, target, this.setPointers)
+      
     }
 
     render(){
+        const {n, barWidth} = this.state
         return(
             <div style={{ position: "relative"}}>
                 
                <div className="buttons">
                     <button onClick={this.generateNewArray}>Generate Array</button>
+                    <input
+                        className="slider"
+                        type="range"
+                        value={this.state.n}
+                        min="5"
+                        max="100" 
+                        onChange={this.handleChange}
+                    />
                     <button onClick={this.linearSearch}>Search {this.state.target}</button>
                     <button onClick={this.binarySearch}>Binary Search {this.state.target}</button>
                     <button onClick={this.jumpSearch}>Jump  Search {this.state.target}</button>
@@ -90,15 +113,15 @@ class Board extends React.Component{
                </div>
                 <div className="row">
                     {this.state.arr.map((value, index) => (
-                        <Square value={value} key={index} id={index}/>
+                        <Square value={value} key={index} barWidth={this.state.barWidth} id={index}/>
                     ))}
                 </div>
                 <div className="row" >
                     {this.state.arr.map((value, index) => (
-                        <div className="box index" key={`${value} - ${index}`}>{index}</div>
+                        <div className="box index" key={`${value} - ${index}`} style={{width: this.state.barWidth}}>{index}</div>
                     ))}
                 </div>
-                <div className="row" style={{width: "100%", position: "relative", backgroundColor: "green"}}>
+                <div className="row" style={{width: (barWidth + 1) * n, position: "relative", backgroundColor: "green"}}>
                    <Pointer left={this.state.leftPointer} pointerType="left-pointer"/>
                    <Pointer left={this.state.rightPointer}  pointerType="right-pointer"/>
                    <Pointer left={this.state.midPointer}  pointerType="mid-pointer"/>
@@ -110,9 +133,9 @@ class Board extends React.Component{
 
 }
 
-function generateRandomArray() {
+function generateRandomArray(n) {
     const arr = []
-    for(let i =0; i < 50; i++){
+    for(let i =0; i < n; i++){
         arr.push(generateRandomNumber())
     }
     return arr
@@ -125,7 +148,7 @@ function sortedArr (arr) {
 }
 
 function generateRandomNumber () {
-    return Math.floor(Math.random() * 40)
+    return Math.floor(Math.random() * 100)
 }
 
 export default Board;

@@ -1,7 +1,6 @@
+import { sleep, calculatePosition} from "./utils"
 const delay = 1000
-const sleep = ms => {
-    return new Promise(resolve => setTimeout(resolve, ms))
-}
+
 
 async function binarySearch(
     arr,
@@ -10,7 +9,7 @@ async function binarySearch(
     rightPointer,
     setPointers
 ) {
-
+    const size = arr.length
     let left = 0;
     let right = arr.length - 1
     if (leftPointer && rightPointer) {
@@ -22,11 +21,11 @@ async function binarySearch(
         let mid = Math.floor((left + right) / 2)
         const midDiv = document.getElementById(mid)
         setPointers({
-            left: (25 + (50 * left)),
-            right: (25 + (50 * right)),
+            left: calculatePosition(left, size),
+            right: calculatePosition(right, size),
         })
         await sleep(delay)
-        setPointers({ mid: (25 + (50 * mid)) })
+        setPointers({ mid: calculatePosition(mid, size)})
         await sleep(1000)
         midDiv.style.backgroundColor = "violet"
         await sleep(500)

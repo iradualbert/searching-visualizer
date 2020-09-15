@@ -6,6 +6,7 @@
   transform: rotate(-90deg);
   width: 50px;
   height: 3px;
+  top: 20px;
 }
 .pointer:after {
   content: "";
