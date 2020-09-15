@@ -9,29 +9,27 @@
 .buttons {
   display: flex;
   position: fixed;
-  top: 20px;
-  left: 20px;
-  width: 1000px;
+  background-color: #f7f7f7;
+  top: 0;
+  left: 0;
+  width: 100%;
   justify-content: space-between;
+  padding: 10px 30px;
+  box-sizing: border-box;
 }
 .box {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  /* height: 50px; */
-  /* width: 50px; */
-  font-size: 15px;
   color:#848391;
   margin-left: 1px;
 }
 
 .box-value {
-background-color: #e9ecf2;
+background-color: #acc4fc;
 }
-
-
 .index {
   font-size: 8px;
-  /* border: 1px solid white; */
+  color: blue;
 }
 

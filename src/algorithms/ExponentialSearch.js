@@ -17,7 +17,7 @@ const exponentialSearch  = async (arr, target, setPointers) => {
         await sleep(delay)
     }
     await sleep(delay)
-    binarySearch(arr, target, i/2, Math.min(i, size-1), setPointers)
+    return binarySearch(arr, target, i/2, Math.min(i, size-1), setPointers)
 }
 
 export default exponentialSearch;

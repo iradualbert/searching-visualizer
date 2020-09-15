@@ -3,22 +3,22 @@ import { calculatePosition, sleep } from "./utils"
 const delay = 1000
 
 
-const jumpSearch = async (arr, target, setPointers) =>{
+const jumpSearch = async (arr, target, setPointers) => {
     const size = arr.length;
-    let step =  Math.floor(Math.sqrt(size));
+    let step = Math.floor(Math.sqrt(size));
     let start = 0;
     let end = step;
-    if( size === 0){
+    if (size === 0) {
         document.getElementById(0).style.backgroundColor = "green";
         return -1
     }
-    while( arr[end] < target) {
+    while (arr[end] < target) {
         setPointers({
             left: calculatePosition(start, size),
             right: calculatePosition(end, size)
         })
         await sleep(delay)
-        if(arr[start] > target){
+        if (arr[start] > target) {
             return -1
         }
         start = end;
