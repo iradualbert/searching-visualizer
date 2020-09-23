@@ -8,7 +8,6 @@ import binarySearch from "../../algorithms/binarySearch";
 import jumpSearch from "../../algorithms/JumpSearch";
 import exponentialSearch from "../../algorithms/exponentialSearch";
 
-// testAlgorithm(exponentialSearch)
 
 class Board extends React.Component {
 
@@ -48,18 +47,17 @@ class Board extends React.Component {
         await this.setState({ range: range, barWidth: barWidth })
         this.generateNewArray()
     }
-    generateNewArray = () => {
+    generateNewArray = async () => {
         const { range } = this.state
         this.setState({ arr: [] })
-        this.setState({
+        await this.setState({
             arr: sortedArr(generateRandomArray(range)),
             leftPointer: -75,
             rightPointer: -25,
             midPointer: -50,
         });
-        const bars = document.getElementsByClassName('box box-value')
-        for (let bar of bars) {
-            bar.style.backgroundColor = ""
+        for(let i =0; i < this.state.arr.length; i++){
+            document.getElementById(i).className = "box box-value";
         }
     }
 
@@ -104,12 +102,12 @@ class Board extends React.Component {
     }
 
     render() {
-        const { range, barWidth } = this.state
+        const { range, target, barWidth } = this.state
         return (
             <div style={{ position: "relative", marginTop: 60, marginLeft: 150 }}>
                 <Header
-                    range={this.state.range}
-                    target={this.state.target}
+                    range={range}
+                    target={target}
                     handleChange={this.handleChange}
                     binarySearch={this.binarySearch}
                     exponentialSearch={this.exponentialSearch}

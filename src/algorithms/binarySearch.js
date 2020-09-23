@@ -11,7 +11,7 @@ async function binarySearch(
 ) {
     const size = arr.length
     let left = 0;
-    let right = arr.length - 1
+    let right = arr.length - 1;
     if (leftPointer && rightPointer) {
         left = leftPointer;
         right = rightPointer
@@ -27,30 +27,45 @@ async function binarySearch(
             right: calculatePosition(right, size),
         })
         await sleep(1000)
-        leftDiv.style.backgroundColor = colors.edgeColor
-        rightDiv.style.backgroundColor = colors.edgeColor
+        leftDiv.classList.add("edge");
+        rightDiv.classList.add("edge");
         await sleep(delay)
         setPointers({ mid: calculatePosition(mid, size) })
         await sleep(1000)
-        midDiv.style.backgroundColor = "violet"
+        midDiv.classList.add("mid-violet");
         await sleep(500)
-        midDiv.style.backgroundColor = arr[mid] === target ? "green" : "red"
+        midDiv.classList.remove("mid-violet");
+        midDiv.classList.add(arr[mid] === target ? "mid-green" : "mid-red")
         if (arr[mid] === target) {
             return mid
         }
         else if (arr[mid] > target) {
             right = mid - 1
+            
+            for (let i = right; i < size; i++) {
+                setTimeout(() => {
+                    document.getElementById(i).classList.add("searched");
+                }, 2000);
+                
+            }
         }
         else {
             left = mid + 1;
+            for (let i = 0; i < left; i++) {
+                setTimeout(() => {
+                    document.getElementById(i).classList.add("searched");
+                }, 2000);
+            }
 
         };
         await sleep(delay)
         setTimeout(() => {
-            midDiv.style.backgroundColor = "";
-            leftDiv.style.backgroundColor = "";
-            rightDiv.style.backgroundColor = "";
+            midDiv.classList.remove("mid-red");
+            leftDiv.classList.remove("edge");
+            rightDiv.classList.remove("edge");
         }, 1000);
+            
+      
 
 
     }

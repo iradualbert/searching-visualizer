@@ -16,7 +16,12 @@ async function linearSearch(
             return i
         }
         else if(arr[i] > target ){
+            await sleep(delay)
             return -1
+        } else {
+            setTimeout(() => {
+                document.getElementById(i).classList.add("searched")
+            }, 1000);
         }
         await sleep(delay)
     };

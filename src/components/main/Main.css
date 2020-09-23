@@ -28,6 +28,23 @@
 .box-value {
 background-color: #acc4fc;
 }
+.searched {
+  background-color: #e3e8e8 !important;
+}
+
+.edge{
+  background-color: turquoise !important;
+}
+.mid-green{
+  background-color: green !important;
+}
+.mid-violet{
+  background-color: violet !important;
+}
+.mid-red {
+  background-color: red !important;
+}
+
 .index {
   font-size: 8px;
   color: blue;
