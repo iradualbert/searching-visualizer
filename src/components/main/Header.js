@@ -13,12 +13,12 @@ const Header = props => {
         handleChange,
         setTarget
     } = props;
-    const searchDisabled = isRunning || !(target >=0 ) || target === ""
-    
+    const searchDisabled = isRunning || !(target >= 0) || target === "";
+
     return (
         <div className="buttons bg-secondary">
-            <button className="btn btn-primary" disabled={isRunning} onClick={generateNewArray}>Generate Sorted Array</button>  
-            <label htmlFor="size" style={{marginTop: 8, color:"white"}}>Size</label>
+            <button className="btn btn-primary" disabled={isRunning} onClick={generateNewArray}>Generate Sorted Array</button>
+            <label htmlFor="size" style={{ marginTop: 8, color: "white" }}>Size</label>
             <input
                 disabled={isRunning}
                 name="size"
@@ -34,13 +34,13 @@ const Header = props => {
                 <input
                     disabled={isRunning}
                     type="number"
+                    min="0"
                     placeholder="Value to Search"
                     className="form-control"
                     value={target}
                     onChange={(event) => setTarget(event.target.value)}
                 />
             </div>
-
             <button
                 className="btn btn-dark"
                 disabled={searchDisabled}
@@ -68,7 +68,6 @@ const Header = props => {
             >
                 Exponential Search
             </button>
-
         </div>
     )
 }
