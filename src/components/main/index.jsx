@@ -200,7 +200,7 @@ function sortedArr(arr) {
 }
 
 function generateRandomNumber() {
-    return Math.floor(Math.random() * 200)
+    return Math.floor(Math.random() * 300)
 }
 
 export default Board;

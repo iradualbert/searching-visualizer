@@ -5,27 +5,27 @@
   transform-origin: left;
   transform: rotate(-90deg);
   width: 50px;
-  height: 3px;
+  height: 1px;
   top: 20px;
 }
 .pointer:after {
   content: "";
   display: inline-block;
-  height: 3px;
+  height: 1px;
   width: 15px;
   position: absolute;
   transform: rotate(45deg);
-  right: -3px;
+  right: -1px;
   bottom: 4px;
 }
 .pointer::before {
   content: "";
   display: inline-block;
-  height: 3px;
+  height: 1px;
   width: 15px;
   position: absolute;
   transform: rotate(-45deg);
-  right: -3px;
+  right: -1px;
   bottom: -4px;
 }
 .left-pointer{

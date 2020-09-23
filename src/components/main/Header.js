@@ -27,7 +27,7 @@ const Header = props => {
                 id="size"
                 value={size}
                 min="10"
-                max="200"
+                max="300"
                 onChange={handleChange}
             />
             <div>

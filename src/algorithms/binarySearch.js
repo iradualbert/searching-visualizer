@@ -14,7 +14,7 @@ async function binarySearch(
     if (leftPointer && rightPointer) {
         left = leftPointer;
         right = rightPointer;
-        for(let k=right + 1; k <size; k++){
+        for (let k = right + 1; k < size; k++) {
             document.getElementById(k).classList.add("searched")
         }
     }
@@ -37,19 +37,23 @@ async function binarySearch(
         midDiv.classList.add("mid-violet");
         await sleep(500)
         midDiv.classList.remove("mid-violet");
-        midDiv.classList.add(arr[mid] === target ? "mid-green" : "mid-red")
+        midDiv.classList.add(arr[mid] === target ? "mid-green" : "mid-red");
         if (arr[mid] === target) {
+            // give other bars a light color
+            for(let k=left; k <right +1; k++){
+                if( arr[k] !== target){
+                    document.getElementById(k).className = "box box-value searched";
+                }
+            }
             return mid
         }
         else if (arr[mid] > target) {
-            right = mid - 1
-            
+            right = mid - 1;
             for (let i = right; i < size; i++) {
                 setTimeout(() => {
                     document.getElementById(i).classList.add("searched");
                 }, 2000);
-                
-            }
+            };
         }
         else {
             left = mid + 1;
@@ -66,13 +70,11 @@ async function binarySearch(
             leftDiv.classList.remove("edge");
             rightDiv.classList.remove("edge");
         }, 1000);
-            
-      
-
-
+    };
+    // give all bars a light color
+    for (let k = left; k < right + 1; k++) {
+        document.getElementById(k).className = "box box-value searched";
     }
-
     return -1
-
 };
 export default binarySearch;

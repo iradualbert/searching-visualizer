@@ -25,11 +25,16 @@ async function linearSearch(
         }
         else if (arr[i] === target) {
             currentDiv.classList.add("mid-green")
+             for (let k = i + 1; k < size; k++) {
+                 document.getElementById(k).classList.add("searched")
+             };
             return i
         }
         else if(arr[i] > target ){
             await sleep(delay)
-            currentDiv.classList.add("searched");
+            for(let k=i; k <size; k++){
+                document.getElementById(k).classList.add("searched")
+            }
             return -1
         } ;
         await sleep(delay)
