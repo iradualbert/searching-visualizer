@@ -12,8 +12,11 @@ async function linearSearch(
         setPointers({ left: calculatePosition(i, size) })
         if (arr[i] === target) {
             await sleep(delay)
-            document.getElementById(i).style.backgroundColor = "green"
+            document.getElementById(i).style.backgroundColor = "green";
             return i
+        }
+        else if(arr[i] > target ){
+            return -1
         }
         await sleep(delay)
     };
