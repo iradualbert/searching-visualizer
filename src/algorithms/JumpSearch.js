@@ -26,9 +26,18 @@ const jumpSearch = async (arr, target, setPointers) => {
         setPointers({
             left: calculatePosition(start, size),
             right: calculatePosition(Math.min(end, size - 1), size)
-        })
+        });
+        for(let i=0; i < start; i++){
+            setTimeout(() => {
+                document.getElementById(i).classList.add("searched")
+            }, 1000);
+        }
     }
-    // call linear search
+    await sleep(delay);
+    for(let i= end +1; i < size; i++){
+        document.getElementById(i).classList.add("searched")
+    }
+    await sleep(100);
     return linearSearch(arr, target, setPointers, start)
 
 }

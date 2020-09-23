@@ -1,7 +1,7 @@
 .pointer {
   transition: all;
   position: absolute;
-  transition-duration: 1s;
+  transition-duration: 0.5s;
   transform-origin: left;
   transform: rotate(-90deg);
   width: 50px;
@@ -14,7 +14,6 @@
   height: 3px;
   width: 15px;
   position: absolute;
-  /* background-color: #000; */
   transform: rotate(45deg);
   right: -3px;
   bottom: 4px;
@@ -25,7 +24,6 @@
   height: 3px;
   width: 15px;
   position: absolute;
-  /* background-color: #000; */
   transform: rotate(-45deg);
   right: -3px;
   bottom: -4px;

@@ -1,6 +1,5 @@
-import { sleep, calculatePosition, colors } from "./utils"
+import { sleep, calculatePosition } from "./utils"
 const delay = 1000
-
 
 async function binarySearch(
     arr,
@@ -14,7 +13,10 @@ async function binarySearch(
     let right = arr.length - 1;
     if (leftPointer && rightPointer) {
         left = leftPointer;
-        right = rightPointer
+        right = rightPointer;
+        for(let k=right + 1; k <size; k++){
+            document.getElementById(k).classList.add("searched")
+        }
     }
 
     while (left <= right) {

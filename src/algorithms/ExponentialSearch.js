@@ -3,7 +3,6 @@ import  { sleep, calculatePosition} from "./utils";
 
 const delay = 1000
 
-
 const exponentialSearch  = async (arr, target, setPointers) => {
     const size = arr.length
     if(arr[0] === target){
@@ -13,6 +12,10 @@ const exponentialSearch  = async (arr, target, setPointers) => {
     let i = 1;    
     while (i < size && arr[i] <= target){
         setPointers({left: calculatePosition(i, size)})
+        await sleep(delay)
+        for(let k=0; k < i; k++){
+            document.getElementById(k).classList.add("searched");
+        }
         i = i * 2
         await sleep(delay)
     }

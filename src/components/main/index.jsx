@@ -7,6 +7,7 @@ import linearSearch from "../../algorithms/linearSearch";
 import binarySearch from "../../algorithms/binarySearch";
 import jumpSearch from "../../algorithms/JumpSearch";
 import exponentialSearch from "../../algorithms/exponentialSearch";
+import Status from "./Status";
 
 
 class Board extends React.Component {
@@ -15,12 +16,13 @@ class Board extends React.Component {
         arr: [],
         speed: 100,
         target: generateRandomNumber(),
-        range: 20,
+        size: 20,
         barWidth: 50,
         leftPointer: -75,
         rightPointer: -50,
         midPointer: -25,
         isRunning: false,
+        results: [],
     }
 
 
@@ -39,22 +41,26 @@ class Board extends React.Component {
         this.generateNewArray();
     };
     setTarget = (value) => {
-        this.setState({ target: value })
+        if(value){
+            this.setState({ target: parseInt(value) })
+        }
+        else (this.setState({target: ""}))
     }
     handleChange = async (event) => {
-        const range = event.target.value
-        const barWidth = Math.floor(1000 / range)
-        await this.setState({ range: range, barWidth: barWidth })
+        const size = event.target.value
+        const barWidth = Math.floor(1000 / size)
+        await this.setState({ size: size, barWidth: barWidth })
         this.generateNewArray()
     }
     generateNewArray = async () => {
-        const { range } = this.state
+        const { size } = this.state
         this.setState({ arr: [] })
         await this.setState({
-            arr: sortedArr(generateRandomArray(range)),
+            arr: sortedArr(generateRandomArray(size)),
             leftPointer: -75,
             rightPointer: -25,
             midPointer: -50,
+            results: []
         });
         for(let i =0; i < this.state.arr.length; i++){
             document.getElementById(i).className = "box box-value";
@@ -71,42 +77,51 @@ class Board extends React.Component {
 
     linearSearch = async () => {
         this.setState({ isRunning: true })
-        const { arr, target } = this.state;
-        await linearSearch(arr, target, this.setPointers)
+        const { arr, target, results } = this.state;
+        const index = await linearSearch(arr, target, this.setPointers);
+        results.push([target, index])
         this.resetPointers()
-        this.setState({ isRunning: false })
+        this.setState({ isRunning: false, results: results})
     }
     binarySearch = async () => {
-        this.setState({ isRunning: true })
-        const { arr, target } = this.state
-        await binarySearch(arr, target, null, null, this.setPointers)
+        this.setState({ isRunning: true });
+        const { arr, target, results } = this.state;
+        const index = await binarySearch(arr, target, null, null, this.setPointers)
+        results.push([target, index]);
         this.resetPointers()
-        this.setState({ isRunning: false })
+        this.setState({ isRunning: false, results: results })
     };
-
     jumpSearch = async () => {
         this.setState({ isRunning: true })
-        const { arr, target } = this.state;
-        await jumpSearch(arr, target, this.setPointers)
+        const { arr, target, results } = this.state;
+        const index = await jumpSearch(arr, target, this.setPointers)
+        results.push([target, index])
         this.resetPointers()
-        this.setState({ isRunning: false })
-
+        this.setState({ isRunning: false, results: results})
     };
 
     exponentialSearch = async () => {
         this.setState({ isRunning: true })
-        const { arr, target } = this.state;
-        await exponentialSearch(arr, target, this.setPointers)
+        const { arr, target, results} = this.state;
+        const index = await exponentialSearch(arr, target, this.setPointers)
+        results.push([target, index])
         this.resetPointers()
-        this.setState({ isRunning: false })
+        this.setState({ isRunning: false, results: results })
     }
 
     render() {
-        const { range, target, barWidth } = this.state
+        const { 
+            arr, 
+            size,
+            target, 
+            barWidth, 
+            isRunning, 
+            results
+        } = this.state;
         return (
             <div style={{ position: "relative", marginTop: 60, marginLeft: 150 }}>
                 <Header
-                    range={range}
+                    size={size}
                     target={target}
                     handleChange={this.handleChange}
                     binarySearch={this.binarySearch}
@@ -116,6 +131,11 @@ class Board extends React.Component {
                     jumpSearch={this.jumpSearch}
                     setTarget={this.setTarget}
                     isRunning={this.state.isRunning}
+                />
+                <Status 
+                   isRunning={isRunning} 
+                   results={results}
+                   target={target}
                 />
                 <div className="row">
                     {this.state.arr.map((value, index) => (
@@ -128,11 +148,11 @@ class Board extends React.Component {
                     ))}
                 </div>
                 <div className="row" >
-                    {this.state.arr.map((value, index) => (
+                    {arr.map((value, index) => (
                         <div
                             className="box index"
                             key={`${value} - ${index}`}
-                            style={{ width: barWidth }}
+                            style={{ width: barWidth, fontSize: Math.min(barWidth / 2, 15) }}
                         >
                             {index}
                         </div>
@@ -140,7 +160,7 @@ class Board extends React.Component {
                 </div>
                 <div
                     className="row"
-                    style={{ width: (barWidth + 1) * range, position: "relative", backgroundColor: "green" }}
+                    style={{ width: (barWidth + 1) * size, position: "relative", backgroundColor: "green" }}
                 >
                     {this.state.isRunning &&
                         <React.Fragment>
@@ -165,9 +185,9 @@ class Board extends React.Component {
 
 }
 
-function generateRandomArray(range) {
+function generateRandomArray(size) {
     const arr = []
-    for (let i = 0; i < range; i++) {
+    for (let i = 0; i < size; i++) {
         arr.push(generateRandomNumber())
     }
     return arr

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Header = props => {
     const {
@@ -7,25 +7,27 @@ const Header = props => {
         jumpSearch,
         exponentialSearch,
         binarySearch,
-        range,
+        size,
         target,
         isRunning,
         handleChange,
         setTarget
     } = props;
-
-    const [algo, setAlgo] = useState(null)
+    const searchDisabled = isRunning || !(target >=0 ) || target === ""
     
     return (
-        <div className="buttons">
-            <button className="btn" disabled={isRunning} onClick={generateNewArray}>Generate Sorted Array</button>
+        <div className="buttons bg-secondary">
+            <button className="btn btn-primary" disabled={isRunning} onClick={generateNewArray}>Generate Sorted Array</button>  
+            <label htmlFor="size" style={{marginTop: 8, color:"white"}}>Size</label>
             <input
                 disabled={isRunning}
+                name="size"
                 className="slider"
                 type="range"
-                value={range}
-                min="5"
-                max="100"
+                id="size"
+                value={size}
+                min="10"
+                max="200"
                 onChange={handleChange}
             />
             <div>
@@ -40,28 +42,28 @@ const Header = props => {
             </div>
 
             <button
-                className="btn"
-                disabled={isRunning || !target}
+                className="btn btn-dark"
+                disabled={searchDisabled}
                 onClick={linearSearch}
             >
                 Linear Search
             </button>
             <button
-                className="btn"
-                disabled={isRunning || !target}
+                className="btn btn-dark"
+                disabled={searchDisabled}
                 onClick={binarySearch}
             >
                 Binary Search
             </button>
             <button
-                className="btn"
-                disabled={isRunning || !target}
+                className="btn btn-dark"
+                disabled={searchDisabled}
                 onClick={jumpSearch}>
                 Jump  Search
             </button>
             <button
-                className="btn"
-                disabled={isRunning || !target}
+                className="btn btn-dark"
+                disabled={searchDisabled}
                 onClick={exponentialSearch}
             >
                 Exponential Search

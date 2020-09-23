@@ -17,6 +17,11 @@
   padding: 10px 30px;
   box-sizing: border-box;
 }
+.status {
+  position: fixed;
+  top: 100px;
+  left: 100px;
+}
 .box {
   display: flex;
   justify-content: center;
