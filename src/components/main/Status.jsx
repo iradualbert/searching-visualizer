@@ -1,6 +1,6 @@
 import React from "react";
 
-function Status(props){
+function Status(props) {
     const {
         isRunning,
         target,
@@ -9,9 +9,9 @@ function Status(props){
     return (
         <div className="status">
             {isRunning && <div className="">Searching for {target}</div>}
-            {results.map(result => {
+            {results.map((result, index) => {
                 return (
-                    <div className="result">
+                    <div className="result" key={index}>
                         {result[1] > -1 ?
                             <h6><b>{result[0]}</b> is at index <b>{result[1]}.</b></h6>
                             : <h6><b>{result[0]}</b> was not found.</h6>}

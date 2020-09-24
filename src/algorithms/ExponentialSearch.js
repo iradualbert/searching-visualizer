@@ -9,15 +9,18 @@ const exponentialSearch  = async (arr, target, setPointers) => {
         document.getElementById(0).style.backgroundColor = "green"
         return 0
     }
-    let i = 1;    
+    let i = 1;
+    let currentDiv = undefined;
     while (i < size && arr[i] <= target){
+        currentDiv = document.getElementById(i)
         setPointers({left: calculatePosition(i, size)});
-        document.getElementById(i).classList.add("edge")
+        await sleep(500)
+        currentDiv.classList.add("interval")
         await sleep(delay)
         for(let k=0; k < i; k++){
             document.getElementById(k).classList.add("searched");
-        }
-        i = i * 2
+        };
+        i = i * 2;
         await sleep(delay)
     }
     await sleep(delay)
