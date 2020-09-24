@@ -1,4 +1,4 @@
-  *This project is built using [React.js](https://reactjs.org/) along with [Bootstrap](https://getbootstrap.com/).* 
+  *This project was built using [React.js](https://reactjs.org/) along with [Bootstrap](https://getbootstrap.com/).* 
 
 This project showcases how searching an element in a sorted array works  using  4 different searching algorithms.  Linear search algorithm is the simplest searching algorithm. In this type, we go through the entire array until we find the element we are looking  for.   The array doesn't have to be sorted, but for now, we'll be using  sorted arrays since other algorithms only work with sorted arrays. Apart from linear search which is a sequential algorithm, all algorithms use divide and conquer techniques to search for the value.
 In this  project, arrays are randomly generated and naively sorted behind the scene. You can re-generate a random array by simply clicking on Generate sorted array button.

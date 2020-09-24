@@ -11,7 +11,8 @@ const exponentialSearch  = async (arr, target, setPointers) => {
     }
     let i = 1;    
     while (i < size && arr[i] <= target){
-        setPointers({left: calculatePosition(i, size)})
+        setPointers({left: calculatePosition(i, size)});
+        document.getElementById(i).classList.add("edge")
         await sleep(delay)
         for(let k=0; k < i; k++){
             document.getElementById(k).classList.add("searched");
