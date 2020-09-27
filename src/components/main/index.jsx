@@ -5,7 +5,7 @@ import Bar from "./Bar";
 import Pointer from "../pointer/Pointer";
 import linearSearch from "../../algorithms/linearSearch";
 import binarySearch from "../../algorithms/binarySearch";
-import jumpSearch from "../../algorithms/JumpSearch";
+import jumpSearch from "../../algorithms/jumpSearch";
 import exponentialSearch from "../../algorithms/exponentialSearch";
 import Status from "./Status";
 

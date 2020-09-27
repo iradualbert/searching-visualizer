@@ -12,7 +12,7 @@ const Bar = (props) => {
             id={id}
             style={
                 {
-                    height: value * 1.7,
+                    height: value * 1.5,
                     width: barWidth,
                     fontSize: Math.min(barWidth / 2, 15)
                 }

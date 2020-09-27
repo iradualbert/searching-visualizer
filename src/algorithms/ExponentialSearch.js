@@ -1,8 +1,7 @@
 import binarySearch from "./binarySearch";
 import  { sleep, calculatePosition} from "./utils";
 
-const delay = 1000
-
+const delay = 500
 const exponentialSearch  = async (arr, target, setPointers) => {
     const size = arr.length
     if(arr[0] === target){
@@ -14,7 +13,7 @@ const exponentialSearch  = async (arr, target, setPointers) => {
     while (i < size && arr[i] <= target){
         currentDiv = document.getElementById(i)
         setPointers({left: calculatePosition(i, size)});
-        await sleep(500)
+        await sleep(delay)
         currentDiv.classList.add("interval")
         await sleep(delay)
         for(let k=0; k < i; k++){

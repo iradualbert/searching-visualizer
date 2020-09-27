@@ -1,6 +1,6 @@
 import linearSearch from "./linearSearch";
 import { calculatePosition, sleep } from "./utils"
-const delay = 1000;
+const delay = 500;
 
 async function jumpSearch(
     arr,

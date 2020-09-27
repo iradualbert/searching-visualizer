@@ -8,7 +8,6 @@ function Status(props) {
     } = props;
     return (
         <div className="status">
-            {isRunning && <div className="">Searching for {target}</div>}
             {results.map((result, index) => {
                 return (
                     <div className="result" key={index}>
@@ -18,6 +17,7 @@ function Status(props) {
                     </div>
                 )
             })}
+            {isRunning && <div className="">Searching for {target}</div>}
         </div>
     )
 };

@@ -13,7 +13,7 @@ async function linearSearch(
     for (let i = startIndex; i < size; i++) {
         currentDiv = document.getElementById(i);
         setPointers({ left: calculatePosition(i, size) })
-        await sleep(delay * 2)
+        await sleep(delay * 1.5)
         currentDiv.classList.add("mid-violet");
         await sleep(delay);
         currentDiv.classList.remove("mid-violet")
