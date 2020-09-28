@@ -11,14 +11,14 @@ export default function () {
             </Modal.Header>
             <Modal.Body>
             <p>
-                This project covers 4 most popular <b>searching algorithms</b>  namely <b>Linear Search, Jump Search, Binary Search and Exponential Search</b>.
+                This app covers 4 most popular <b>searching algorithms</b>  namely <b>Linear Search, Jump Search, Binary Search and Exponential Search</b>.
             </p>           
             <p>
                 Apart from <b>Linear search</b> which is a <b>sequential algorithm</b>, all other algorithms use <b>divide-and-conquer</b> technique to search for the value.
                 They are also much more efficient than Linear search.
             </p>
             <p>
-              The elements of the array are represented by <b>Rectangle Bars</b>. The height of the bar represents its value in the array.
+              The elements of the array are represented by <b>rectangular bars</b> where the height of the bar represents its value in the array.
             </p>
             <p>
                 You can generate a random array by simply clicking on <b>Generate Sorted Array</b> button.
