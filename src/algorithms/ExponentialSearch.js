@@ -20,7 +20,6 @@ const exponentialSearch  = async (arr, target, setPointers) => {
             document.getElementById(k).classList.add("searched");
         };
         i = i * 2;
-        await sleep(delay)
     }
     await sleep(delay)
     return binarySearch(arr, target, i/2, Math.min(i, size-1), setPointers)

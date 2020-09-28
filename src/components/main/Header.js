@@ -35,7 +35,7 @@ const Header = props => {
                     disabled={isRunning}
                     type="number"
                     min="0"
-                    placeholder="Value to Search"
+                    placeholder="Target Value.."
                     className="form-control"
                     value={target}
                     onChange={(event) => setTarget(event.target.value)}
@@ -51,16 +51,17 @@ const Header = props => {
             <button
                 className="btn btn-dark"
                 disabled={searchDisabled}
-                onClick={binarySearch}
-            >
-                Binary Search
+                onClick={jumpSearch}>
+                Jump  Search
             </button>
             <button
                 className="btn btn-dark"
                 disabled={searchDisabled}
-                onClick={jumpSearch}>
-                Jump  Search
+                onClick={binarySearch}
+            >
+                Binary Search
             </button>
+            
             <button
                 className="btn btn-dark"
                 disabled={searchDisabled}

@@ -1,5 +1,5 @@
 import { sleep, calculatePosition } from "./utils"
-const delay = 1000
+const delay = 500
 
 async function binarySearch(
     arr,
@@ -28,14 +28,14 @@ async function binarySearch(
             left: calculatePosition(left, size),
             right: calculatePosition(right, size),
         })
-        await sleep(1000)
+        await sleep(delay)
         leftDiv.classList.add("edge");
         rightDiv.classList.add("edge");
         await sleep(delay)
         setPointers({ mid: calculatePosition(mid, size) })
-        await sleep(1000)
+        await sleep(delay)
         midDiv.classList.add("mid-violet");
-        await sleep(500)
+        await sleep(delay)
         midDiv.classList.remove("mid-violet");
         midDiv.classList.add(arr[mid] === target ? "mid-green" : "mid-red");
         if (arr[mid] === target) {
@@ -52,7 +52,7 @@ async function binarySearch(
             for (let i = right; i < size; i++) {
                 setTimeout(() => {
                     document.getElementById(i).classList.add("searched");
-                }, 2000);
+                }, delay * 2);
             };
         }
         else {
@@ -60,7 +60,7 @@ async function binarySearch(
             for (let i = 0; i < left; i++) {
                 setTimeout(() => {
                     document.getElementById(i).classList.add("searched");
-                }, 2000);
+                }, delay * 2);
             }
 
         };
@@ -69,7 +69,7 @@ async function binarySearch(
             midDiv.classList.remove("mid-red");
             leftDiv.classList.remove("edge");
             rightDiv.classList.remove("edge");
-        }, 1000);
+        }, delay);
     };
     // give all bars a light color
     for (let k = left; k < right + 1; k++) {

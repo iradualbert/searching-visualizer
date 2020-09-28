@@ -20,7 +20,7 @@ async function jumpSearch(
             left: calculatePosition(start, size),
             right: calculatePosition(end, size)
         })
-        await sleep(delay)
+        await sleep(delay / 2)
         if (arr[start] > target) {
             return -1
         };
@@ -49,7 +49,7 @@ async function jumpSearch(
             return -1
         };
         // wait 
-        await sleep(delay / 2)
+        await sleep(delay / 4)
     }
     await sleep(delay);
     for (let i = end + 1; i < size; i++) {
