@@ -18,7 +18,7 @@ const Header = props => {
     return (
         <div className="buttons bg-secondary">
             <button className="btn btn-primary" disabled={isRunning} onClick={generateNewArray}>Generate Sorted Array</button>
-            <label htmlFor="size" style={{ marginTop: 8, color: "white" }}>Size</label>
+            <label htmlFor="size" style={{ marginTop: 8, color: "white" }}>Array Size</label>
             <input
                 disabled={isRunning}
                 name="size"

@@ -13,7 +13,7 @@ function Status(props) {
                     <div className="result" key={index}>
                         {result[1] > -1 ?
                             <h6><b>{result[0]}</b> is at index <b>{result[1]}.</b></h6>
-                            : <h6><b>{result[0]}</b> was not found.</h6>}
+                            : <h6><b>{result[0]}</b> is not in the array.</h6>}
                     </div>
                 )
             })}

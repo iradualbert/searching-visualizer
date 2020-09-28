@@ -2,12 +2,16 @@ import React from "react";
 import "./Main.css";
 import Header from "./Header";
 import Bar from "./Bar";
-import Pointer from "../pointer/Pointer";
-import linearSearch from "../../algorithms/linearSearch";
-import binarySearch from "../../algorithms/binarySearch";
-import jumpSearch from "../../algorithms/jumpSearch";
-import exponentialSearch from "../../algorithms/exponentialSearch";
+import Pointer from "../pointer";
+import Intro from "../intro";
 import Status from "./Status";
+import {
+    linearSearch,
+    binarySearch,
+    jumpSearch,
+    exponentialSearch
+} from "../../algorithms";
+
 
 
 class Board extends React.Component {
@@ -41,10 +45,10 @@ class Board extends React.Component {
         this.generateNewArray();
     };
     setTarget = (value) => {
-        if(value){
+        if (value) {
             this.setState({ target: parseInt(value) })
         }
-        else (this.setState({target: ""}))
+        else (this.setState({ target: "" }))
     }
     handleChange = async (event) => {
         const size = event.target.value
@@ -62,7 +66,7 @@ class Board extends React.Component {
             midPointer: -50,
             results: []
         });
-        for(let i =0; i < this.state.arr.length; i++){
+        for (let i = 0; i < this.state.arr.length; i++) {
             document.getElementById(i).className = "box box-value";
         }
     }
@@ -81,7 +85,7 @@ class Board extends React.Component {
         const index = await linearSearch(arr, target, this.setPointers);
         results.push([target, index])
         this.resetPointers()
-        this.setState({ isRunning: false, results: results})
+        this.setState({ isRunning: false, results: results })
     }
     binarySearch = async () => {
         this.setState({ isRunning: true });
@@ -97,12 +101,12 @@ class Board extends React.Component {
         const index = await jumpSearch(arr, target, this.setPointers)
         results.push([target, index])
         this.resetPointers()
-        this.setState({ isRunning: false, results: results})
+        this.setState({ isRunning: false, results: results })
     };
 
     exponentialSearch = async () => {
         this.setState({ isRunning: true })
-        const { arr, target, results} = this.state;
+        const { arr, target, results } = this.state;
         const index = await exponentialSearch(arr, target, this.setPointers)
         results.push([target, index])
         this.resetPointers()
@@ -110,12 +114,12 @@ class Board extends React.Component {
     }
 
     render() {
-        const { 
-            arr, 
+        const {
+            arr,
             size,
-            target, 
-            barWidth, 
-            isRunning, 
+            target,
+            barWidth,
+            isRunning,
             results
         } = this.state;
         return (
@@ -132,11 +136,12 @@ class Board extends React.Component {
                     setTarget={this.setTarget}
                     isRunning={this.state.isRunning}
                 />
-                <Status 
-                   isRunning={isRunning} 
-                   results={results}
-                   target={target}
+                <Status
+                    isRunning={isRunning}
+                    results={results}
+                    target={target}
                 />
+                <Intro />
                 <div className="row">
                     {this.state.arr.map((value, index) => (
                         <Bar
@@ -176,7 +181,7 @@ class Board extends React.Component {
                                 left={this.state.midPointer}
                                 pointerType="mid-pointer"
                             /></React.Fragment>
-                        }
+                    }
                 </div>
             </div>
 
