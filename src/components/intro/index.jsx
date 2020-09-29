@@ -11,7 +11,7 @@ export default function () {
             </Modal.Header>
             <Modal.Body>
             <p>
-                This app covers 4 most popular <b>searching algorithms</b>  namely <b>Linear Search, Jump Search, Binary Search and Exponential Search</b>.
+                This app covers 4 most popular <b>Searching Algorithms</b>:<b>Linear Search, Jump Search, Binary Search and Exponential Search</b>.
             </p>           
             <p>
                 Apart from <b>Linear search</b> which is a <b>sequential algorithm</b>, all other algorithms use <b>divide-and-conquer</b> technique to search for the value.
